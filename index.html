@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technology Learning Timeline</title>
+    <title>Saahithi's Learning Journey</title>
     <style>
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -12,15 +13,19 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #ffffff;
             background: #0a0a0a;
             min-height: 100vh;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
             position: relative;
             overflow-x: hidden;
         }
 
+        /* Dynamic space background */
         body::before {
             content: '';
             position: fixed;
@@ -29,11 +34,29 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(243, 156, 18, 0.1) 0%, transparent 50%);
             z-index: -2;
+            animation: backgroundShift 20s ease-in-out infinite;
         }
 
+        @keyframes backgroundShift {
+            0%, 100% {
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(243, 156, 18, 0.1) 0%, transparent 50%);
+            }
+            50% {
+                background: 
+                    radial-gradient(circle at 60% 30%, rgba(155, 89, 182, 0.2) 0%, transparent 50%),
+                    radial-gradient(circle at 30% 70%, rgba(231, 76, 60, 0.2) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 60%, rgba(243, 156, 18, 0.15) 0%, transparent 50%);
+            }
+        }
+
+        /* Twinkling stars */
         .stars {
             position: fixed;
             top: 0;
@@ -48,7 +71,7 @@
             position: absolute;
             width: 2px;
             height: 2px;
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             animation: twinkle 3s infinite;
         }
@@ -56,249 +79,217 @@
         .star.medium {
             width: 3px;
             height: 3px;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+            animation: twinkle 4s infinite;
         }
 
         .star.large {
             width: 4px;
             height: 4px;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            animation: twinkle 5s infinite;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+            }
         }
 
+        /* Container with proper spacing */
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 24px 120px;
             position: relative;
             z-index: 1;
         }
 
+        /* Beautiful typography hierarchy */
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0;
+            margin-bottom: 80px;
+            padding: 0 20px;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 50%, #f39c12 100%);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 16px;
-            letter-spacing: -2px;
+            letter-spacing: -0.02em;
             line-height: 1.1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
 
         .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: #b0b0b0;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 480px;
+            margin: 0 auto 40px;
         }
 
+        /* Invisible controls - minimal visual weight */
         .controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            padding: 0 20px;
+            gap: 8px;
+            margin-bottom: 60px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
 
-        .filter-container {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
+        .controls:hover {
+            opacity: 1;
         }
 
         .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: #ffffff;
-            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.8);
             white-space: nowrap;
-            min-width: 80px;
-            text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .filter-btn:hover {
-            border-color: #9b59b6;
-            background: rgba(155, 89, 182, 0.2);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            transform: translateY(-1px);
         }
 
         .filter-btn.active {
-            border-color: #9b59b6;
             background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            border-color: transparent;
             color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
         }
 
+        /* Add content button - beautiful cosmic accent */
+        .add-content-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(155, 89, 182, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .add-content-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(155, 89, 182, 0.6);
+        }
+
+        /* Timeline - clean and spacious */
         .timeline {
             position: relative;
             padding: 20px 0;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #9b59b6, #e74c3c, #f39c12);
-            transform: translateX(-50%);
-            border-radius: 2px;
-            box-shadow: 0 0 20px rgba(155, 89, 182, 0.5);
-        }
-
         .timeline-item {
             position: relative;
-            margin: 60px 0;
-            display: flex;
-            align-items: center;
+            margin: 0 0 60px 0;
             opacity: 0;
-            transform: translateY(50px);
-            animation: slideInUp 0.8s ease-out forwards;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            animation: slideIn 0.6s ease-out forwards;
+            transition: all 0.3s ease;
         }
 
         .timeline-item.hidden {
             display: none;
         }
 
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
         .timeline-item:nth-child(1) { animation-delay: 0.1s; }
         .timeline-item:nth-child(2) { animation-delay: 0.2s; }
         .timeline-item:nth-child(3) { animation-delay: 0.3s; }
         .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
 
-        .timeline-icon {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            z-index: 10;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border: 4px solid transparent;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .timeline-icon.frontend {
-            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
-            border-color: #9b59b6;
-            box-shadow: 0 0 30px rgba(155, 89, 182, 0.5);
-        }
-
-        .timeline-icon.backend {
-            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
-            border-color: #e74c3c;
-            box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
-        }
-
-        .timeline-icon.database {
-            background: linear-gradient(135deg, #f39c12 0%, #9b59b6 100%);
-            border-color: #f39c12;
-            box-shadow: 0 0 30px rgba(243, 156, 18, 0.5);
-        }
-
-        .timeline-icon.devops {
-            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
-            border-color: #9b59b6;
-            box-shadow: 0 0 30px rgba(155, 89, 182, 0.5);
-        }
-
-        .timeline-icon.mobile {
-            background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
-            border-color: #e74c3c;
-            box-shadow: 0 0 30px rgba(231, 76, 60, 0.5);
-        }
-
-        .timeline-icon.ai {
-            background: linear-gradient(135deg, #f39c12 0%, #9b59b6 100%);
-            border-color: #f39c12;
-            box-shadow: 0 0 30px rgba(243, 156, 18, 0.5);
-        }
-
-        .timeline-item:hover .timeline-icon {
-            transform: translateX(-50%) scale(1.1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-        }
-
+        /* Smart cards - glass morphism with cosmic feel */
         .timeline-content {
-            flex: 1;
-            max-width: 500px;
-            margin: 0 80px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 32px;
-            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
             position: relative;
+            cursor: pointer;
             backdrop-filter: blur(20px);
         }
 
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -10px;
-            box-shadow: 2px -2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -10px;
-            box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
         .timeline-content:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-6px);
+            box-shadow: 
+                0 16px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(155, 89, 182, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
         }
 
+        /* Content type indicators - cosmic gradients */
+        .content-type {
+            position: absolute;
+            top: -8px;
+            right: 24px;
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+        }
+
+        .content-type.ai-learning {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.4);
+        }
+
+        .content-type.kellogg {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+        }
+
+        .content-type.personal {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Typography within cards - high contrast */
         .timeline-date {
-            font-size: 0.9rem;
-            color: #f39c12;
+            font-size: 0.85rem;
+            color: rgba(243, 156, 18, 0.9);
             font-weight: 600;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -306,53 +297,25 @@
         }
 
         .timeline-title {
-            font-size: clamp(1.3rem, 3vw, 1.6rem);
-            font-weight: 700;
+            font-size: clamp(1.4rem, 3vw, 1.7rem);
+            font-weight: 600;
             color: #ffffff;
             margin-bottom: 16px;
             line-height: 1.3;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .timeline-description {
-            color: #b0b0b0;
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             font-size: 0.95rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .timeline-description p {
-            margin-bottom: 12px;
-        }
-
-        .timeline-description ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 16px 0;
-        }
-
-        .timeline-description li {
-            position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
-            color: #d0d0d0;
-            line-height: 1.6;
-        }
-
-        .timeline-description li::before {
-            content: '●';
-            position: absolute;
-            left: 0;
-            color: #9b59b6;
-            font-size: 1.2em;
-            line-height: 1;
-        }
-
-        .timeline-description li:nth-child(2n)::before {
-            color: #e74c3c;
-        }
-
-        .timeline-description li:nth-child(3n)::before {
-            color: #f39c12;
+            margin-bottom: 16px;
         }
 
         .timeline-description strong {
@@ -360,6 +323,31 @@
             font-weight: 600;
         }
 
+        /* List styling - clean and readable */
+        .timeline-description ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+
+        .timeline-description li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .timeline-description li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #f39c12;
+            font-weight: bold;
+            text-shadow: 0 0 6px rgba(243, 156, 18, 0.6);
+        }
+
+        /* Tags - cosmic styling */
         .timeline-tags {
             display: flex;
             flex-wrap: wrap;
@@ -369,14 +357,14 @@
 
         .tag {
             background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 12px;
             font-size: 0.8rem;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -384,43 +372,278 @@
             background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
         }
 
-        .timeline-level {
-            display: inline-block;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        /* Search - elegant cosmic styling */
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-container:focus-within {
+            opacity: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             backdrop-filter: blur(10px);
         }
 
-        .level-beginner {
-            background: rgba(155, 89, 182, 0.2);
-            color: #9b59b6;
-            border: 1px solid #9b59b6;
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .level-intermediate {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-            border: 1px solid #e74c3c;
+        .search-input:focus {
+            outline: none;
+            border-color: #9b59b6;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.2);
         }
 
-        .level-advanced {
-            background: rgba(243, 156, 18, 0.2);
-            color: #f39c12;
-            border: 1px solid #f39c12;
+        /* Modal - cosmic glass morphism */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 24px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #9b59b6;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.2);
+        }
+
+        .form-group select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(155, 89, 182, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        /* Mobile responsive - maintain cosmic beauty */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 16px 100px;
+            }
+
+            .header {
+                margin-bottom: 60px;
+                padding: 0 8px;
+            }
+
+            .timeline-content {
+                padding: 24px;
+                margin: 0 0 40px 0;
+            }
+
+            .controls {
+                gap: 6px;
+                margin-bottom: 40px;
+                flex-wrap: wrap;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .add-content-btn {
+                bottom: 24px;
+                right: 24px;
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+
+            .modal-content {
+                padding: 24px;
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .timeline-tags {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 0.75rem;
+                padding: 3px 10px;
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Success animation - cosmic style */
+        .success-animation {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            z-index: 3000;
+            opacity: 0;
+            animation: successPop 0.5s ease-out forwards;
+            box-shadow: 0 8px 24px rgba(39, 174, 96, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes successPop {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Scroll indicator - cosmic accent */
         .scroll-indicator {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: rgba(255, 255, 255, 0.1);
             z-index: 1000;
         }
@@ -429,130 +652,6 @@
             height: 100%;
             background: linear-gradient(90deg, #9b59b6, #e74c3c, #f39c12);
             transition: width 0.3s ease;
-        }
-
-        /* Tablet styles */
-        @media (max-width: 1024px) {
-            .container {
-                max-width: 900px;
-                padding: 30px 15px;
-            }
-
-            .timeline-content {
-                margin: 0 60px;
-                max-width: 450px;
-            }
-
-            .timeline-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3em;
-            }
-        }
-
-        /* Mobile styles */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 10px;
-            }
-
-            .header {
-                padding: 20px 0;
-                margin-bottom: 30px;
-            }
-
-            .controls {
-                gap: 8px;
-                margin-bottom: 30px;
-            }
-
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-                min-width: 70px;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-                align-items: flex-start;
-                padding-left: 70px;
-                margin: 40px 0;
-            }
-
-            .timeline-icon {
-                left: 30px !important;
-                width: 45px;
-                height: 45px;
-                font-size: 1.1em;
-            }
-
-            .timeline-content {
-                margin: 0;
-                margin-top: 20px;
-                max-width: 100%;
-                padding: 24px;
-            }
-
-            .timeline-content::before {
-                display: none;
-            }
-
-            .timeline-title {
-                font-size: 1.4rem;
-            }
-
-            .timeline-description {
-                font-size: 0.9rem;
-            }
-
-            .timeline-tags {
-                gap: 6px;
-            }
-
-            .tag {
-                padding: 4px 12px;
-                font-size: 0.75rem;
-            }
-        }
-
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px 8px;
-            }
-
-            .timeline-content {
-                padding: 20px;
-            }
-
-            .timeline-title {
-                font-size: 1.3rem;
-            }
-
-            .timeline-description {
-                font-size: 0.85rem;
-            }
-
-            .timeline-description li {
-                padding-left: 20px;
-                margin-bottom: 10px;
-            }
-
-            .filter-btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @keyframes slideInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
@@ -565,87 +664,139 @@
 
     <div class="container">
         <header class="header">
-            <h1>Saahithi goes back to school - learnings and musings from Kellogg</h1>
-            <p class="subtitle">Here's what's top of mind</p>
+            <h1>Learning & Growing</h1>
+            <p class="subtitle">Mental maps, models, and insights from the journey</p>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search thoughts, insights, learnings..." id="searchInput">
+            </div>
         </header>
 
         <div class="controls">
-            <div class="filter-container">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="AI Learnings">AI Learnings</button>
-                <button class="filter-btn" data-filter="Kellogg">Kellogg</button>
-                <button class="filter-btn" data-filter="Personal">Personal</button>
-            </div>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="AI Learnings">AI</button>
+            <button class="filter-btn" data-filter="Kellogg">Kellogg</button>
+            <button class="filter-btn" data-filter="Personal">Personal</button>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-item" data-level="AI Learnings" data-tags="MCP, Notion, Claude">
-                <div class="timeline-icon frontend">🎨</div>
+        <div class="timeline" id="timeline">
+            <div class="timeline-item" data-category="AI Learnings" data-tags="MCP, Notion, Claude, Integration">
                 <div class="timeline-content">
+                    <div class="content-type ai-learning">AI Learnings</div>
                     <div class="timeline-date">July 2025</div>
-                    <h3 class="timeline-title">Model Context Protocol & Claude</h3>
+                    <h3 class="timeline-title">Connecting Claude to My Workspace</h3>
                     <div class="timeline-description">
-                        <p><strong>MCP (Model Context Protocol)</strong> lets Claude work directly inside your Notion workspace instead of just talking about it. By connecting the two, Claude can create pages, update databases, and search your content natively, meaning you can ask Claude to build project templates, organize notes, or manage tasks right in Notion without copying and pasting between apps.</p>
-                        <p><strong>Perfect for anyone who wants their AI assistant to actually live where they work.</strong></p>
-                        <p><strong>Here's how to set it up:</strong></p>
+                        <p><strong>Model Context Protocol (MCP)</strong> is like giving Claude keys to your digital workspace. Instead of copying and pasting between apps, Claude can now create, read, and update content directly in Notion.</p>
+                        <p>The setup process revealed something profound about the future of AI integration—it's not about replacing tools, it's about making them work together seamlessly.</p>
                         <ul>
-                            <li><strong>Create a Notion integration</strong> - Visit notion.so/integrations, click "New Integration", name it, and select permissions like "Read content" and "Update content"</li>
-                            <li><strong>Get your token</strong> - Copy the "Internal Integration Token" from your integration for authentication</li>
-                            <li><strong>Install the MCP server</strong> - Download Node.js, then grab the Notion MCP server from the official GitHub repository</li>
-                            <li><strong>Configure Claude Desktop</strong> - Open Claude Desktop settings, go to Developer, click "Edit Config" to open claude_desktop_config.json, and add your server configuration with the token</li>
-                            <li><strong>Connect and restart</strong> - Fully quit and relaunch Claude Desktop so it can detect the MCP server and establish connection</li>
+                            <li><strong>Create a Notion integration</strong> at notion.so/integrations with appropriate permissions</li>
+                            <li><strong>Install the MCP server</strong> from the official GitHub repository</li>
+                            <li><strong>Configure Claude Desktop</strong> by editing claude_desktop_config.json with your integration token</li>
+                            <li><strong>Restart Claude</strong> to establish the connection</li>
                         </ul>
+                        <p>This represents a shift from AI as a conversation partner to AI as a collaborative workspace inhabitant.</p>
                     </div>
                     <div class="timeline-tags">
-                        <span class="tag" onclick="filterByTag('MCP')">MCP</span>
-                        <span class="tag" onclick="filterByTag('Notion')">Notion</span>
-                        <span class="tag" onclick="filterByTag('Claude')">Claude</span>
+                        <span class="tag">MCP</span>
+                        <span class="tag">Notion</span>
+                        <span class="tag">Claude</span>
+                        <span class="tag">Integration</span>
                     </div>
-                    <span class="timeline-level level-beginner">AI Learnings</span>
                 </div>
             </div>
 
-            <div class="timeline-item" data-level="Kellogg" data-tags="MBA">
-                <div class="timeline-icon frontend">⚡</div>
+            <div class="timeline-item" data-category="Kellogg" data-tags="MBA, Chicago, Transition, Gratitude">
                 <div class="timeline-content">
+                    <div class="content-type kellogg">Kellogg</div>
                     <div class="timeline-date">July 2025</div>
-                    <h3 class="timeline-title">Starting a new chapter at Kellogg!</h3>
+                    <h3 class="timeline-title">New Chapter: Kellogg Bound</h3>
                     <div class="timeline-description">
-                        <p><strong>Chicago, I'm coming to you soon!!</strong> I'm thrilled to start this new chapter at Kellogg and feel so much gratitude to have worked with incredibly talented and generous colleagues.</p>
-                        <p>Deloitte has given me more than I could have hoped for:</p>
+                        <p><strong>Chicago, here I come!</strong> The transition from Deloitte to Kellogg feels like stepping into a new version of myself—one that's been shaped by incredible experiences and relationships.</p>
+                        <p>Reflecting on what Deloitte gave me:</p>
                         <ul>
-                            <li><strong>Peers who became friends</strong> - Building lasting relationships that extend beyond work</li>
-                            <li><strong>Mentors who became sponsors</strong> - Guidance that shaped my career trajectory</li>
-                            <li><strong>Rich experiences</strong> - Diverse projects and challenges that I'll carry with me throughout my career</li>
+                            <li><strong>Peers who became friends</strong> - relationships that transcend work titles and will last a lifetime</li>
+                            <li><strong>Mentors who became sponsors</strong> - people who saw potential I didn't know I had</li>
+                            <li><strong>Rich, complex challenges</strong> - problems that stretched my thinking and capabilities</li>
                         </ul>
+                        <p>The nervous excitement is real. MBA programs aren't just about learning new frameworks—they're about discovering new ways of thinking, new mental models for navigating complexity.</p>
                     </div>
                     <div class="timeline-tags">
-                        <span class="tag" onclick="filterByTag('MBA')">MBA</span>
+                        <span class="tag">MBA</span>
+                        <span class="tag">Chicago</span>
+                        <span class="tag">Transition</span>
+                        <span class="tag">Gratitude</span>
                     </div>
-                    <span class="timeline-level level-beginner">Kellogg</span>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <!-- Add Content Button -->
+    <button class="add-content-btn" id="addBtn">+</button>
+
+    <!-- Add Content Modal -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <h2>Add New Learning</h2>
+            <form id="addContentForm">
+                <div class="form-group">
+                    <label for="entryTitle">Title</label>
+                    <input type="text" id="entryTitle" required placeholder="What did you learn or experience?">
+                </div>
+
+                <div class="form-group">
+                    <label for="entryCategory">Category</label>
+                    <select id="entryCategory" required>
+                        <option value="">Choose a category</option>
+                        <option value="AI Learnings">AI Learnings</option>
+                        <option value="Kellogg">Kellogg</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="entryDate">Date</label>
+                    <input type="text" id="entryDate" placeholder="e.g., August 2025" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="entryDescription">Description</label>
+                    <textarea id="entryDescription" required placeholder="Share your insights, mental models, and key learnings..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="entryTags">Tags</label>
+                    <input type="text" id="entryTags" placeholder="Separate with commas: AI, learning, insight">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Learning</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
         let currentFilter = 'all';
+        let timelineData = [];
 
-        // Create stars
+        // Create twinkling stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = Math.min(200, window.innerWidth / 8); // Fewer stars on mobile
+            const starCount = Math.min(200, window.innerWidth / 8);
+            
+            starsContainer.innerHTML = '';
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                // Random size
+                // Random size distribution
                 const size = Math.random();
-                if (size > 0.8) {
+                if (size > 0.85) {
                     star.className += ' large';
-                } else if (size > 0.6) {
+                } else if (size > 0.65) {
                     star.className += ' medium';
                 }
                 
@@ -653,8 +804,13 @@
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 
-                // Random animation delay
-                star.style.animationDelay = Math.random() * 3 + 's';
+                // Random animation delay for more natural twinkling
+                star.style.animationDelay = Math.random() * 5 + 's';
+                
+                // Add slight random animation duration variation
+                const baseDuration = star.className.includes('large') ? 5 : 
+                                   star.className.includes('medium') ? 4 : 3;
+                star.style.animationDuration = (baseDuration + Math.random() * 2) + 's';
                 
                 starsContainer.appendChild(star);
             }
@@ -668,19 +824,93 @@
             document.getElementById('scrollProgress').style.width = scrollPercentage + '%';
         }
 
-        // Filter functionality
-        function filterByLevel(level) {
-            currentFilter = level;
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            initializeSearch();
+            loadExistingData();
+            
+            // Add button event listener
+            document.getElementById('addBtn').addEventListener('click', openAddModal);
+            
+            // Cancel button event listener
+            document.getElementById('cancelBtn').addEventListener('click', closeAddModal);
+            
+            // Filter button event listeners
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    filterByCategory(this.dataset.filter);
+                });
+            });
+
+            // Form submission
+            document.getElementById('addContentForm').addEventListener('submit', handleFormSubmission);
+
+            // Close modal on background click
+            document.getElementById('addModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeAddModal();
+                }
+            });
+
+            // Load from localStorage if available
+            loadFromLocalStorage();
+        });
+
+        // Load existing timeline data
+        function loadExistingData() {
+            const existingItems = document.querySelectorAll('.timeline-item');
+            existingItems.forEach(item => {
+                const title = item.querySelector('.timeline-title').textContent;
+                const date = item.querySelector('.timeline-date').textContent;
+                const category = item.dataset.category;
+                const description = item.querySelector('.timeline-description').innerHTML;
+                const tags = item.dataset.tags.split(',').map(tag => tag.trim());
+
+                timelineData.push({
+                    title,
+                    date,
+                    category,
+                    description,
+                    tags,
+                    element: item
+                });
+            });
+        }
+
+        // Search functionality
+        function initializeSearch() {
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    performSearch(this.value);
+                }, 300);
+            });
+        }
+
+        function performSearch(query) {
+            if (!query.trim()) {
+                // Show all items if search is empty
+                filterByCategory(currentFilter);
+                return;
+            }
+
             const items = document.querySelectorAll('.timeline-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-filter="${level}"]`).classList.add('active');
-            
-            // Filter items
+            const searchLower = query.toLowerCase();
+
             items.forEach(item => {
-                if (level === 'all' || item.dataset.level === level) {
+                const title = item.querySelector('.timeline-title').textContent.toLowerCase();
+                const description = item.querySelector('.timeline-description').textContent.toLowerCase();
+                const tags = item.dataset.tags.toLowerCase();
+
+                const matches = title.includes(searchLower) || 
+                              description.includes(searchLower) || 
+                              tags.includes(searchLower);
+
+                if (matches) {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
@@ -688,21 +918,164 @@
             });
         }
 
-        function filterByTag(tag) {
+        // Filter functionality
+        function filterByCategory(category) {
+            currentFilter = category;
             const items = document.querySelectorAll('.timeline-item');
+            const buttons = document.querySelectorAll('.filter-btn');
             
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+            
+            // Filter items
             items.forEach(item => {
-                const tags = item.dataset.tags.split(',').map(t => t.trim());
-                if (tags.includes(tag)) {
+                if (category === 'all' || item.dataset.category === category) {
                     item.classList.remove('hidden');
                 } else {
                     item.classList.add('hidden');
                 }
             });
+
+            // Clear search when filtering
+            document.getElementById('searchInput').value = '';
+        }
+
+        // Modal functions
+        function openAddModal() {
+            const modal = document.getElementById('addModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
             
-            // Update filter buttons
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+            // Focus on title input
+            setTimeout(() => {
+                document.getElementById('entryTitle').focus();
+            }, 100);
+        }
+
+        function closeAddModal() {
+            const modal = document.getElementById('addModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset form
+            document.getElementById('addContentForm').reset();
+        }
+
+        // Form submission
+        function handleFormSubmission(e) {
+            e.preventDefault();
+            
+            const formData = {
+                title: document.getElementById('entryTitle').value,
+                category: document.getElementById('entryCategory').value,
+                date: document.getElementById('entryDate').value,
+                description: document.getElementById('entryDescription').value,
+                tags: document.getElementById('entryTags').value.split(',').map(tag => tag.trim()).filter(tag => tag)
+            };
+
+            addNewTimelineItem(formData);
+            closeAddModal();
+            showSuccessMessage();
+        }
+
+        // Add new timeline item
+        function addNewTimelineItem(data) {
+            const timeline = document.getElementById('timeline');
+            const newItem = createTimelineElement(data);
+            
+            // Insert at the beginning of the timeline
+            timeline.insertBefore(newItem, timeline.firstChild);
+            
+            // Add to data array
+            timelineData.unshift({
+                ...data,
+                element: newItem
+            });
+
+            // Trigger animation
+            setTimeout(() => {
+                newItem.style.animation = 'slideIn 0.6s ease-out forwards';
+            }, 100);
+
+            // Auto-save to localStorage
+            saveToLocalStorage();
+        }
+
+        // Create timeline element
+        function createTimelineElement(data) {
+            const item = document.createElement('div');
+            item.className = 'timeline-item';
+            item.dataset.category = data.category;
+            item.dataset.tags = data.tags.join(', ');
+            
+            const categoryClass = data.category.toLowerCase().replace(/\s+/g, '-');
+            
+            item.innerHTML = `
+                <div class="timeline-content">
+                    <div class="content-type ${categoryClass}">${data.category}</div>
+                    <div class="timeline-date">${data.date}</div>
+                    <h3 class="timeline-title">${data.title}</h3>
+                    <div class="timeline-description">
+                        <p>${data.description.replace(/\n/g, '</p><p>')}</p>
+                    </div>
+                    <div class="timeline-tags">
+                        ${data.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Add click handlers for tags
+            item.querySelectorAll('.tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    document.getElementById('searchInput').value = this.textContent;
+                    performSearch(this.textContent);
+                });
+            });
+
+            return item;
+        }
+
+        // Success message
+        function showSuccessMessage() {
+            const message = document.createElement('div');
+            message.className = 'success-animation';
+            message.textContent = 'Learning added successfully!';
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+
+        // Auto-save to localStorage
+        function saveToLocalStorage() {
+            const dataToSave = timelineData.map(item => ({
+                title: item.title,
+                category: item.category,
+                date: item.date,
+                description: item.description,
+                tags: item.tags
+            }));
+            
+            localStorage.setItem('timelineData', JSON.stringify(dataToSave));
+        }
+
+        // Load from localStorage on page load
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('timelineData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                data.forEach(item => {
+                    // Only add if not already present
+                    const exists = timelineData.some(existing => 
+                        existing.title === item.title && existing.date === item.date
+                    );
+                    if (!exists) {
+                        addNewTimelineItem(item);
+                    }
+                });
+            }
         }
 
         // Responsive star creation on resize
@@ -713,22 +1086,52 @@
         }
 
         // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
+        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener('resize', handleResize);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Cmd/Ctrl + K to open search
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
             
-            // Filter button event listeners
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    filterByLevel(this.dataset.filter);
-                });
-            });
+            // Escape to close modal
+            if (e.key === 'Escape') {
+                closeAddModal();
+            }
+            
+            // Cmd/Ctrl + N to add new entry
+            if ((e.metaKey || e.ctrlKey) && e.key === 'n') {
+                e.preventDefault();
+                openAddModal();
+            }
         });
 
-        // Scroll event listener
-        window.addEventListener('scroll', updateScrollProgress);
-        
-        // Resize event listener for responsive stars
-        window.addEventListener('resize', handleResize);
-    </script>
-</body>
-</html>
+        // Auto-expand search on focus
+        document.getElementById('searchInput').addEventListener('focus', function() {
+            this.placeholder = 'Try searching for "AI", "Chicago", or "integration"...';
+        });
+
+        document.getElementById('searchInput').addEventListener('blur', function() {
+            this.placeholder = 'Search thoughts, insights, learnings...';
+        });
+
+        // Add some cosmic interaction effects
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.addEventListener('mouseenter', function() {
+                this.style.boxShadow = `
+                    0 16px 40px rgba(0, 0, 0, 0.4),
+                    0 0 20px rgba(155, 89, 182, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2)
+                `;
+            });
+
+            content.addEventListener('mouseleave', function() {
+                this.style.boxShadow = `
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                `;
+            });
+        });
